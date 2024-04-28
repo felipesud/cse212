@@ -156,7 +156,8 @@
             "cwd": "${workspaceFolder}/week05/code",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -169,7 +170,8 @@
             "cwd": "${workspaceFolder}/week06/code",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -182,7 +184,8 @@
             "cwd": "${workspaceFolder}/sandbox/sandbox_project",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
     ]
