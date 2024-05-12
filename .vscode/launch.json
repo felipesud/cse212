@@ -13,7 +13,8 @@
             "cwd": "${workspaceFolder}/week01/teach",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -26,7 +27,8 @@
             "cwd": "${workspaceFolder}/week01/analyze",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -39,7 +41,8 @@
             "cwd": "${workspaceFolder}/week01/code",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -52,7 +55,8 @@
             "cwd": "${workspaceFolder}/week02/learn",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -65,7 +69,8 @@
             "cwd": "${workspaceFolder}/week02/teach",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -78,7 +83,8 @@
             "cwd": "${workspaceFolder}/week02/analyze",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -91,7 +97,8 @@
             "cwd": "${workspaceFolder}/week02/code",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -104,7 +111,8 @@
             "cwd": "${workspaceFolder}/week03/learn",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -117,7 +125,8 @@
             "cwd": "${workspaceFolder}/week03/teach",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -130,7 +139,8 @@
             "cwd": "${workspaceFolder}/week03/code",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -143,7 +153,8 @@
             "cwd": "${workspaceFolder}/week04/code",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -156,7 +167,8 @@
             "cwd": "${workspaceFolder}/week05/code",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -169,7 +181,8 @@
             "cwd": "${workspaceFolder}/week06/code",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
         {
@@ -182,7 +195,8 @@
             "cwd": "${workspaceFolder}/sandbox/sandbox_project",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "targetArchitecture": "x86_64"
         },
 
     ]
