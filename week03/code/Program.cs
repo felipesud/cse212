@@ -1,3 +1,2 @@
-﻿
-Console.WriteLine("\n======================\nMaps\n======================");
+﻿Console.WriteLine("\n======================\nMaps\n======================");
 SetsAndMapsTester.Run();
