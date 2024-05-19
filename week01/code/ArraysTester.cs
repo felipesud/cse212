@@ -1,8 +1,10 @@
-public static class ArraysTester {
+public static class ArraysTester
+{
     /// <summary>
     /// Entry point for the tests
     /// </summary>
-    public static void Run() {
+    public static void Run()
+    {
         // Sample Test Cases (may not be comprehensive)
         Console.WriteLine("\n=========== PROBLEM 1 TESTS ===========");
         double[] multiples = MultiplesOf(7, 5);
@@ -34,14 +36,28 @@ public static class ArraysTester {
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     private static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        /* Create an empty list to store the multiples: Initialize an empty list to store the multiples that will be generated.
+        Iterate to generate multiples: Use a loop to iterate numberOfMultiples times, generating each multiple and adding it to the list.
+        Initialize a loop that runs numberOfMultiples times.
+        Inside the loop, calculate the current multiple by multiplying the startNumber by the loop index plus one (to get the first multiple, the loop index starts from 0).
+        Add the calculated multiple to the list.
+        Return the list of multiples: Once all multiples are generated, return the list. */
 
-        return new double[0]; // replace this return statement with your own
+        // 1. Create an array to store the multiples
+        double[] multiples = new double[length];
+
+        // 2. Iterate to generate multiples
+        for (int i = 0; i < length; i++)
+        {
+            // Calculate the current multiple
+            multiples[i] = number * (i + 1);
+        }
+
+        // 3. Return the array of multiples
+        return multiples;
     }
-    
+
+
     /// <summary>
     /// Rotate the 'data' to the right by the 'amount'.  For example, if the data is 
     /// <c>&lt;List&gt;{1, 2, 3, 4, 5, 6, 7, 8, 9}</c> and an amount is 3 then the list returned should be 
@@ -51,11 +67,30 @@ public static class ArraysTester {
     /// Because a list is dynamic, this function will modify the existing <c>data</c> list rather than returning a new list.
     /// </summary>
     private static void RotateListRight(List<int> data, int amount)
-    {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
 
+    //Handle special cases: If the list data is null or empty, or if the amount is 0, there's nothing to rotate, so we can return early.
+    //Adjust the rotation amount: Since rotating by an amount greater than the length of the list will result in the same list, we can use the modulo operator % to adjust the amount to be within the range of 0 to data.Count - 1.
+    //Extract the rotated portion: Use the GetRange method to extract the last amount elements from the list.
+    //Remove the rotated portion: Use the RemoveRange method to remove the extracted elements from the original list.
+    //Insert the rotated portion at the beginning: Use the InsertRange method to insert the extracted elements at the beginning of the original list.
+    {
+        // 1. Handle special cases
+        if (data == null || data.Count == 0 || amount == 0)
+        {
+            return; // Nothing to rotate
+        }
+
+        // 2. Adjust the rotation amount
+        amount %= data.Count;
+
+        // 3. Extract the rotated portion
+        List<int> rotatedPortion = data.GetRange(data.Count - amount, amount);
+
+        // 4. Remove the rotated portion
+        data.RemoveRange(data.Count - amount, amount);
+
+        // 5. Insert the rotated portion at the beginning
+        data.InsertRange(0, rotatedPortion);
     }
+
 }
