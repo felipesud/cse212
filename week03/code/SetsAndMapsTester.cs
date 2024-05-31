@@ -1,7 +1,9 @@
 using System.Text.Json;
 
-public static class SetsAndMapsTester {
-    public static void Run() {
+public static class SetsAndMapsTester
+{
+    public static void Run()
+    {
         // Problem 1: Find Pairs with Sets
         Console.WriteLine("\n=========== Finding Pairs TESTS ===========");
         DisplayPairs(new[] { "am", "at", "ma", "if", "fi" });
@@ -107,17 +109,17 @@ public static class SetsAndMapsTester {
     /// that there were no duplicates) and therefore should not be displayed.
     /// </summary>
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
-    private static void DisplayPairs(string[] words) {
-        HashSet<string> wordSet = new HashSet<string>(words);
-        HashSet<string> displayed = new HashSet<string>();
-
-        foreach (var word in words) {
-            string reversed = new string(word.Reverse().ToArray());
-            if (word != reversed && wordSet.Contains(reversed) && !displayed.Contains(word)) {
-                Console.WriteLine($"{word} & {reversed}");
-                displayed.Add(word);
-                displayed.Add(reversed);
+    private static void DisplayPairs(string[] words)
+    {
+        var set = new HashSet<string>();
+        foreach (var word in words)
+        {
+            var reverse = new string(word.Reverse().ToArray());
+            if (set.Contains(reverse) && word != reverse)
+            {
+                Console.WriteLine($"{word} & {reverse}");
             }
+            set.Add(word);
         }
     }
 
@@ -135,22 +137,21 @@ public static class SetsAndMapsTester {
     /// #############
     /// # Problem 2 #
     /// #############
-    private static Dictionary<string, int> SummarizeDegrees(string filename) {
+    private static Dictionary<string, int> SummarizeDegrees(string filename)
+    {
         var degrees = new Dictionary<string, int>();
-
-        try {
-            foreach (var line in File.ReadLines(filename)) {
-                var fields = line.Split(',');
-                string degree = fields[3].Trim();
-                if (!degrees.ContainsKey(degree)) {
-                    degrees[degree] = 0;
-                }
+        foreach (var line in File.ReadLines(filename))
+        {
+            var fields = line.Split(",");
+            var degree = fields[3].Trim();
+            if (degrees.ContainsKey(degree))
+            {
                 degrees[degree]++;
             }
-        } catch (FileNotFoundException e) {
-            Console.WriteLine("File not found: " + e.FileName);
-        } catch (Exception e) {
-            Console.WriteLine("An error occurred: " + e.Message);
+            else
+            {
+                degrees[degree] = 1;
+            }
         }
 
         return degrees;
@@ -175,29 +176,69 @@ public static class SetsAndMapsTester {
     /// #############
     /// # Problem 3 #
     /// #############
-    private static bool IsAnagram(string word1, string word2) {
-        var charCount = new Dictionary<char, int>();
+    private static bool IsAnagram(string word1, string word2)
+    {
+        // Remove spaces and convert to lowercase
+        word1 = word1.Replace(" ", "").ToLower();
+        word2 = word2.Replace(" ", "").ToLower();
 
-        foreach (char c in word1.ToLower().Replace(" ", "")) {
-            if (charCount.ContainsKey(c))
-                charCount[c]++;
+        // Check if the lengths are different
+        if (word1.Length != word2.Length)
+        {
+            return false;
+        }
+
+        // Create dictionaries to store character counts
+        var dict1 = new Dictionary<char, int>();
+        var dict2 = new Dictionary<char, int>();
+
+        // Count the characters in word1
+        foreach (char c in word1)
+        {
+            if (dict1.ContainsKey(c))
+            {
+                dict1[c]++;
+            }
             else
-                charCount[c] = 1;
+            {
+                dict1[c] = 1;
+            }
         }
 
-        foreach (char c in word2.ToLower().Replace(" ", "")) {
-            if (!charCount.ContainsKey(c) || charCount[c] == 0)
+        // Count the characters in word2
+        foreach (char c in word2)
+        {
+            if (dict2.ContainsKey(c))
+            {
+                dict2[c]++;
+            }
+            else
+            {
+                dict2[c] = 1;
+            }
+        }
+
+        // Compare the character counts
+        foreach (var kvp in dict1)
+        {
+            char c = kvp.Key;
+            int count1 = kvp.Value;
+            int count2;
+
+            if (!dict2.TryGetValue(c, out count2) || count1 != count2)
+            {
                 return false;
-            charCount[c]--;
+            }
         }
 
-        return charCount.Values.All(v => v == 0);
+        return true;
     }
 
     /// <summary>
     /// Sets up the maze dictionary for problem 4
     /// </summary>
-    private static Dictionary<ValueTuple<int, int>, bool[]> SetupMazeMap() {
+    private static Dictionary<ValueTuple<int, int>, bool[]> SetupMazeMap()
+    {
         Dictionary<ValueTuple<int, int>, bool[]> map = new() {
             { (1, 1), new[] { false, true, false, true } },
             { (1, 2), new[] { false, true, true, false } },
@@ -253,15 +294,28 @@ public static class SetsAndMapsTester {
     /// https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
     /// 
     /// </summary>
-    private static void EarthquakeDailySummary() {
+    private static void EarthquakeDailySummary()
+    {
         const string uri = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
         using var client = new HttpClient();
-        var json = client.GetStringAsync(uri).Result;
+        using var getRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
+        using var jsonStream = client.Send(getRequestMessage).Content.ReadAsStream();
+        using var reader = new StreamReader(jsonStream);
+        var json = reader.ReadToEnd();
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
         var featureCollection = JsonSerializer.Deserialize<FeatureCollection>(json, options);
 
-        foreach (var feature in featureCollection.Features) {
-            Console.WriteLine($"{feature.Properties.Place} - Mag {feature.Properties.Mag}");
+        // TODO:
+        // 1. Add code in FeatureCollection.cs to describe the JSON using classes and properties 
+        // on those classes so that the call to Deserialize above works properly.
+        // 2. Add code below to print out each place a earthquake has happened today and its magitude.
+        foreach (var feature in featureCollection.Features)
+        {
+            if (feature.Properties.Mag.HasValue && !string.IsNullOrEmpty(feature.Properties.Place))
+            {
+                Console.WriteLine($"{feature.Properties.Place} - Mag {feature.Properties.Mag.Value}");
+            }
         }
     }
 }
