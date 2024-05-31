@@ -12,7 +12,7 @@
 /// If a direction is true, then we can proceed.  
 ///
 /// If there is a wall, then display "Can't go that way!".  If there is no wall,
-/// then the '_currX' and '_currY' values should be changed.
+/// then the 'currX' and 'currY' values should be changed.
 /// </summary>
 public class Maze {
     private readonly Dictionary<ValueTuple<int, int>, bool[]> _mazeMap;
@@ -29,8 +29,10 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveLeft() {
+        // FILL IN CODE
         if (_mazeMap[(_currX, _currY)][0]) {
-            _currX--;
+            _currX -= 1;
+            Console.WriteLine("Moved left");
         } else {
             Console.WriteLine("Can't go that way!");
         }
@@ -41,8 +43,10 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveRight() {
-        if (_mazeMap[(_currX, _currY)][1]) {
-            _currX++;
+        // FILL IN CODE
+         if (_mazeMap[(_currX, _currY)][1]) {
+            _currX += 1;
+            Console.WriteLine("Moved right");
         } else {
             Console.WriteLine("Can't go that way!");
         }
@@ -53,8 +57,10 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveUp() {
-        if (_mazeMap[(_currX, _currY)][2]) {
-            _currY--;
+        // FILL IN CODE
+         if (_mazeMap[(_currX, _currY)][2]) {
+            _currY -= 1;
+            Console.WriteLine("Moved up");
         } else {
             Console.WriteLine("Can't go that way!");
         }
@@ -65,8 +71,10 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveDown() {
-        if (_mazeMap[(_currX, _currY)][3]) {
-            _currY++;
+        // FILL IN CODE
+         if (_mazeMap[(_currX, _currY)][3]) {
+            _currY += 1;
+            Console.WriteLine("Moved down");
         } else {
             Console.WriteLine("Can't go that way!");
         }
