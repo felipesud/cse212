@@ -15,22 +15,53 @@ public class Node {
             else
                 Left.Insert(value);
         }
-        else {
+        else if (value > Data) {
             // Insert to the right
             if (Right is null)
                 Right = new Node(value);
             else
                 Right.Insert(value);
         }
+        // Ignore duplicate values
     }
 
     public bool Contains(int value) {
-        // TODO Start Problem 2
-        return false;
+        if (value == Data) {
+            return true;
+        }
+        else if (value < Data) {
+            if (Left is null) {
+                return false;
+            }
+            else {
+                return Left.Contains(value);
+            }
+        }
+        else {
+            if (Right is null) {
+                return false;
+            }
+            else {
+                return Right.Contains(value);
+            }
+        }
     }
 
     public int GetHeight() {
         // TODO Start Problem 4
-        return 0; // Replace this line with the correct return statement(s)
+        if (Left is null && Right is null) {
+            return 1;
+        }
+        else if (Left is null) {
+            return 1 + Right.GetHeight();
+        }
+        else if (Right is null) {
+            return 1 + Left.GetHeight();
+        }
+        else {
+            int leftHeight = Left.GetHeight();
+            int rightHeight = Right.GetHeight();
+            return 1 + Math.Max(leftHeight, rightHeight);
+        }
     }
 }
